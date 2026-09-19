@@ -8,7 +8,7 @@ export interface AnimalColorPalette {
 export interface AnimalData {
   id: number;
   name: string;
-  category: 'Wild' | 'Safari' | 'Farm' | 'Pets' | 'Birds' | 'Reptiles';
+  category: 'Wild' | 'Safari' | 'Farm' | 'Pets' | 'Birds' | 'Reptiles' | 'Ocean' | 'Forest';
   funFact: string;
   colorPalette: AnimalColorPalette[];
   description: string;
@@ -16,7 +16,7 @@ export interface AnimalData {
     midjourney: string;
     dalle: string;
     imagen: string;
-    negativePrompt: string;
+    negativePrompt?: string;
   };
   referencePrompt: {
     midjourney: string;

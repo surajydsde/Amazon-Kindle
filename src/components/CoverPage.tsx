@@ -1,6 +1,7 @@
 import React from 'react';
 import { AnimalVector } from './AnimalVectors';
 import { Sparkles, Star, Award, Heart } from 'lucide-react';
+import { ANIMALS_DATA, TOTAL_PAGES_COUNT } from '../data/animals';
 
 interface CoverPageProps {
   showKdpGuides?: boolean;
@@ -70,7 +71,7 @@ export const CoverPage: React.FC<CoverPageProps> = ({ showKdpGuides = false }) =
 
         {/* Subtitle */}
         <p className="mt-2 sm:mt-3 text-sm sm:text-base md:text-lg font-bold text-slate-700 max-w-md mx-auto">
-          18 Fun and Easy Animals for Kids Ages 3–5
+          {ANIMALS_DATA.length} Fun and Easy Animals for Kids Ages 3–5
         </p>
 
         {/* Value Highlights Pill */}
@@ -82,7 +83,7 @@ export const CoverPage: React.FC<CoverPageProps> = ({ showKdpGuides = false }) =
             🎨 Color Guide on Top
           </span>
           <span className="bg-emerald-300/90 px-2.5 py-0.5 rounded-full shadow-2xs">
-            📄 Single-Sided Pages
+            📄 {TOTAL_PAGES_COUNT} Single-Sided Pages
           </span>
         </div>
       </div>

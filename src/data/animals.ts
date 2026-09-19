@@ -450,6 +450,534 @@ export const ANIMALS_DATA: AnimalData[] = [
       imagen: "Adorable children's book baby turtle in fresh mint green and pastel yellow, smiling cheerfully, clean flat vector on white."
     },
     svgType: "turtle"
+  },
+  {
+    id: 19,
+    name: "Kangaroo",
+    category: "Safari",
+    funFact: "Mother kangaroos have a cozy pouch where their baby joey takes nap-time cuddles!",
+    colorPalette: [
+      { name: "Caramel Brown", hex: "#D4A373" },
+      { name: "Warm Cream", hex: "#FAEDCD" },
+      { name: "Peachy Pink", hex: "#FFCAD4" },
+      { name: "Sunny Gold", hex: "#FFD166" }
+    ],
+    description: "Cheerful mommy kangaroo with a sweet smiling baby joey peeking curiously out of her tummy pouch, big rounded ears, and friendly sparkling eyes.",
+    coloringPrompt: {
+      midjourney: "cute mother kangaroo with baby joey peeking out of pouch, toddler coloring page, ultra thick 6pt bold black outlines, simple chunky shapes, happy faces, pure white background, no shading, clean line art --ar 17:22 --v 6.0",
+      dalle: "Toddler coloring book page of a cute smiling kangaroo with a tiny joey in her pouch, thick bold black outlines, simple clear shapes, white background.",
+      imagen: "Simple toddler coloring book page of a friendly kangaroo and baby joey, extra thick 6px outlines, minimal detail, high contrast vector coloring page on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii cartoon kangaroo with baby joey in pouch, caramel brown and cream, smiling warmly, flat vector art, white background --ar 1:1 --v 6.0",
+      dalle: "Sweet cartoon kangaroo with baby in pouch, soft warm brown colors, rosy cheeks, flat vector illustration on white.",
+      imagen: "Charming children's book baby kangaroo with joey in pouch, caramel and peach hues, clean flat colors on white."
+    },
+    svgType: "kangaroo"
+  },
+  {
+    id: 20,
+    name: "Hippo",
+    category: "Safari",
+    funFact: "Hippos love doing cannonballs and blowing funny bubbles in the warm water!",
+    colorPalette: [
+      { name: "Lilac Blue", hex: "#B8C0FF" },
+      { name: "Bubblegum Pink", hex: "#FFC6FF" },
+      { name: "Soft Indigo", hex: "#A3CEF1" },
+      { name: "Marshmallow", hex: "#F7F7F7" }
+    ],
+    description: "Chubby smiling baby hippo with tiny rounded ears, wide friendly snout with two rounded tooth pegs, and happy closed-arc eyes.",
+    coloringPrompt: {
+      midjourney: "cute baby hippo coloring page for toddlers, extra thick 6pt bold black outlines, big rounded snout, cheerful smile, simple chunky shapes, pure white background, clean line art --ar 17:22 --v 6.0",
+      dalle: "Preschool coloring page of a cute chubby baby hippo, thick black outlines, simple shapes, white background, no shading.",
+      imagen: "Delightful toddler coloring book sheet of a smiling baby hippo with tiny ears, ultra thick clean outlines, pure white paper background."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby hippo in soft pastel purple-blue with pink snout, big cheerful smile, flat vector art, white background --ar 1:1 --v 6.0",
+      dalle: "Adorable cartoon baby hippo in soft lilac and blush pink, happy expression, flat vector illustration.",
+      imagen: "Children's book illustration of a playful baby hippo, soft lavender coat, pink belly, clean flat colors on white."
+    },
+    svgType: "hippo"
+  },
+  {
+    id: 21,
+    name: "Zebra",
+    category: "Safari",
+    funFact: "Every zebra has their own one-of-a-kind stripe pattern, just like a human fingerprint!",
+    colorPalette: [
+      { name: "Crisp White", hex: "#FFFFFF" },
+      { name: "Soft Charcoal", hex: "#3D3D3D" },
+      { name: "Bubblegum Pink", hex: "#FFB5A7" },
+      { name: "Sunny Buttercup", hex: "#FFE66D" }
+    ],
+    description: "Cute smiling baby zebra foal with bold friendly stripes, spiky soft mane, sweet muzzle, and big bright toddler cartoon eyes.",
+    coloringPrompt: {
+      midjourney: "cute baby zebra foal coloring book page for toddlers, thick bold black outlines, wide spaced chunky stripes, friendly smiling face, pure white background, zero shading --ar 17:22 --v 6.0",
+      dalle: "Toddler coloring book page of a cute smiling zebra with simple wide stripes, thick black line art, white background, no shading.",
+      imagen: "Simple toddler coloring book page of a happy cartoon zebra, extremely thick 6px clean black outlines, large simple shapes on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby zebra with soft black stripes and pink nose, cheerful smile, flat colorful cartoon vector, white background --ar 1:1 --v 6.0",
+      dalle: "Sweet cartoon baby zebra with black and white stripes and rosy cheeks, flat vector style on white background.",
+      imagen: "Cheerful children's book baby zebra with friendly eyes and soft stripes, clean flat style on white."
+    },
+    svgType: "zebra"
+  },
+  {
+    id: 22,
+    name: "Hedgehog",
+    category: "Forest",
+    funFact: "Hedgehogs roll into a cute little round ball when they want to take a cozy woodland snooze!",
+    colorPalette: [
+      { name: "Toffee Brown", hex: "#C68B59" },
+      { name: "Warm Biscuit", hex: "#E9D5A1" },
+      { name: "Red Apple", hex: "#E63946" },
+      { name: "Leaf Green", hex: "#588157" }
+    ],
+    description: "Adorable chubby baby hedgehog with soft rounded wavy spine quills, sweet button nose, carrying a cute little red apple on its back.",
+    coloringPrompt: {
+      midjourney: "cute baby hedgehog coloring page for toddlers 3-5 years old, simple soft rounded spines, holding or carrying an apple, thick bold black outlines, happy face, pure white background --ar 17:22 --v 6.0",
+      dalle: "Coloring page of a cute baby hedgehog with simple round spines, thick black lines, white background, no shading.",
+      imagen: "Delightful toddler coloring book sheet of a smiling baby hedgehog with large rounded quills, clean bold outlines on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby hedgehog with soft brown quills and tiny red apple, smiling sweetly, flat vector cartoon, white background --ar 1:1 --v 6.0",
+      dalle: "Adorable cartoon hedgehog with round tummy, warm brown prickles, and a bright red apple, flat vector illustration.",
+      imagen: "Children's book baby hedgehog with cheerful smile and soft spines, clean flat colors on white."
+    },
+    svgType: "hedgehog"
+  },
+  {
+    id: 23,
+    name: "Squirrel",
+    category: "Forest",
+    funFact: "Squirrels use their big fluffy bushy tails like a cozy umbrella and balance beam!",
+    colorPalette: [
+      { name: "Rust Orange", hex: "#E07A5F" },
+      { name: "Creamy Peach", hex: "#F4F1DE" },
+      { name: "Acorn Brown", hex: "#8D6E63" },
+      { name: "Forest Olive", hex: "#81B29A" }
+    ],
+    description: "Cheerful woodland squirrel holding a giant round acorn with two paws, oversized curly bushy tail, and twinkling eyes.",
+    coloringPrompt: {
+      midjourney: "cute baby squirrel holding an acorn coloring page for toddlers, extra thick 6pt outlines, giant simple curly tail, happy smile, pure white background, clean line art --ar 17:22 --v 6.0",
+      dalle: "Toddler coloring book page of a cute smiling squirrel holding an acorn, thick black outlines, simple shapes, white background.",
+      imagen: "Simple toddler coloring book page of a cartoon squirrel with large fluffy tail and acorn, bold clean lines, white background."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby squirrel in warm rust orange holding a golden acorn, big fluffy tail, flat cartoon vector, white background --ar 1:1 --v 6.0",
+      dalle: "Sweet cartoon baby squirrel holding an acorn, bright orange and cream fur, flat vector on white.",
+      imagen: "Charming children's book baby squirrel with cheerful expression and fluffy tail, clean flat colors on white."
+    },
+    svgType: "squirrel"
+  },
+  {
+    id: 24,
+    name: "Whale",
+    category: "Ocean",
+    funFact: "Blue whales can sing deep ocean songs that travel for hundreds of peaceful miles!",
+    colorPalette: [
+      { name: "Ocean Blue", hex: "#48CAE4" },
+      { name: "Sky Mist", hex: "#ADE8F4" },
+      { name: "Water Spout", hex: "#0077B6" },
+      { name: "Rosy Blush", hex: "#FFB5A7" }
+    ],
+    description: "Chubby smiling baby whale with a heart-shaped water spout bubbling out of its blowhole, sweet flipper, and big joyful cartoon eye.",
+    coloringPrompt: {
+      midjourney: "cute baby whale with water spout coloring page for toddlers 3 years old, ultra thick bold black outlines, simple smooth body, smiling face, pure white background, no shading --ar 17:22 --v 6.0",
+      dalle: "Preschool coloring page of a cute happy whale spouting water, thick black outlines, simple shapes, white background.",
+      imagen: "Delightful toddler coloring book sheet of a smiling baby blue whale with water drops, extra thick outlines on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby whale in bright aqua blue with water spout fountain, sweet smiling face, flat vector art, white background --ar 1:1 --v 6.0",
+      dalle: "Cheerful cartoon baby whale in sky blue with splashing water droplets, flat clean vector on white.",
+      imagen: "Children's book baby whale swimming happily with water fountain, clean flat colors on white."
+    },
+    svgType: "whale"
+  },
+  {
+    id: 25,
+    name: "Octopus",
+    category: "Ocean",
+    funFact: "An octopus has three whole hearts and can change colors when it feels super excited!",
+    colorPalette: [
+      { name: "Grape Purple", hex: "#B5838D" },
+      { name: "Lilac Pink", hex: "#FFC6FF" },
+      { name: "Ocean Teal", hex: "#4ECDC4" },
+      { name: "Lemon Pop", hex: "#FFE66D" }
+    ],
+    description: "Cute round baby octopus with a bulbous happy head, big sparkling eyes, and 6 wavy rounded toddler tentacles with simple suction circles.",
+    coloringPrompt: {
+      midjourney: "cute baby octopus coloring book page for toddlers, extra thick 6pt outlines, big round head, simple wavy tentacles, cheerful smile, pure white background, clean line art --ar 17:22 --v 6.0",
+      dalle: "Toddler coloring book page of a cute friendly octopus with wavy arms, thick black outlines, simple shapes, white background.",
+      imagen: "Simple toddler coloring book page of a smiling baby octopus, extra bold clean black outlines, high contrast on white paper."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby octopus in pastel purple and pink, big friendly eyes and wavy tentacles, flat vector cartoon, white background --ar 1:1 --v 6.0",
+      dalle: "Sweet cartoon baby octopus in soft purple with happy smile, flat vector illustration on white.",
+      imagen: "Vibrant children's book baby octopus with cheerful expression, clean flat colors on white."
+    },
+    svgType: "octopus"
+  },
+  {
+    id: 26,
+    name: "Crab",
+    category: "Ocean",
+    funFact: "Crabs walk sideways like funny little tap dancers along the sunny beach sand!",
+    colorPalette: [
+      { name: "Bright Coral", hex: "#FF6B6B" },
+      { name: "Sunny Orange", hex: "#FFA07A" },
+      { name: "Beach Sand", hex: "#FFEBB2" },
+      { name: "Soft Aqua", hex: "#70C1B3" }
+    ],
+    description: "Joyful smiling baby crab with a smooth oval shell, two big round waving claws, googly happy stalk eyes, and little walking legs.",
+    coloringPrompt: {
+      midjourney: "cute baby crab coloring page for toddlers 3-5 years old, thick bold black outlines, simple round claws, smiling face, stalk eyes, pure white background, no shading --ar 17:22 --v 6.0",
+      dalle: "Coloring page of an adorable friendly crab waving claws, thick black line art, simple shapes, white background.",
+      imagen: "Delightful toddler coloring book sheet of a happy smiling baby crab, extra thick 6px clean outlines, pure white paper background."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby crab in bright coral red and orange, waving claws with cheerful smile, flat vector art, white background --ar 1:1 --v 6.0",
+      dalle: "Adorable cartoon baby crab in bright red with friendly eyes, flat vector illustration on white.",
+      imagen: "Children's book cheerful baby crab on white background, clean flat colors and cute expression."
+    },
+    svgType: "crab"
+  },
+  {
+    id: 27,
+    name: "Sea Otter",
+    category: "Ocean",
+    funFact: "Sea otters hold paws while sleeping so they don't float apart on ocean waves!",
+    colorPalette: [
+      { name: "Warm Cinnamon", hex: "#A98467" },
+      { name: "Almond Cream", hex: "#DDC3A5" },
+      { name: "Seafoam Green", hex: "#6B9080" },
+      { name: "Shell Pink", hex: "#F4ACB7" }
+    ],
+    description: "Charming baby sea otter floating on its back, hugging a cute scallop seashell against its tummy, with round ears and whiskers.",
+    coloringPrompt: {
+      midjourney: "cute baby sea otter floating on back holding a shell, toddler coloring page, ultra thick 6pt outlines, simple shapes, happy smile, pure white background --ar 17:22 --v 6.0",
+      dalle: "Toddler coloring book page of a cute baby otter holding a shell on its belly, thick black outlines, white background.",
+      imagen: "Simple toddler coloring book page of a sweet sea otter with seashell, extra thick clean black outlines, white background."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby sea otter floating with a pink shell, warm brown and cream fur, flat vector cartoon, white background --ar 1:1 --v 6.0",
+      dalle: "Sweet cartoon baby otter holding a shell, soft brown hues, rosy cheeks, flat vector on white.",
+      imagen: "Charming children's book baby sea otter with joyful expression, clean flat colors on white."
+    },
+    svgType: "otter"
+  },
+  {
+    id: 28,
+    name: "Seal",
+    category: "Ocean",
+    funFact: "Baby seals have plush velvet coats and love clapping their soft flippers when happy!",
+    colorPalette: [
+      { name: "Frost Gray", hex: "#ADB5BD" },
+      { name: "Arctic Ice", hex: "#E9ECEF" },
+      { name: "Peachy Cheek", hex: "#FFCCD5" },
+      { name: "Navy Splash", hex: "#4A6FA5" }
+    ],
+    description: "Adorable chubby harp seal pup with round body, clapping front flippers together, cute snout with dot whiskers, and big soulful eyes.",
+    coloringPrompt: {
+      midjourney: "cute baby seal clapping flippers coloring book page for toddlers, extra thick bold black outlines, simple smooth round body, smiling face, pure white background --ar 17:22 --v 6.0",
+      dalle: "Preschool coloring page of a cute chubby baby seal clapping flippers, thick black lines, simple shapes, white background.",
+      imagen: "Delightful toddler coloring book sheet of a happy baby seal, ultra thick clean outlines on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby harp seal pup in soft pearl gray and white, clapping flippers, flat vector art, white background --ar 1:1 --v 6.0",
+      dalle: "Sweet cartoon baby seal pup with big shiny eyes and pink nose, flat vector style on white.",
+      imagen: "Children's book illustration of a cheerful baby seal, soft frosty tones, clean flat colors on white."
+    },
+    svgType: "seal"
+  },
+  {
+    id: 29,
+    name: "Deer",
+    category: "Forest",
+    funFact: "Baby deer have magical white spots on their back that shimmer like dappled forest sunshine!",
+    colorPalette: [
+      { name: "Warm Fawn", hex: "#DDA15E" },
+      { name: "Creamy White", hex: "#FEFAE0" },
+      { name: "Berry Red", hex: "#BC6C25" },
+      { name: "Blossom Pink", hex: "#F28482" }
+    ],
+    description: "Gentle baby fawn with tall sweet ears, big expressive eyes, a tiny fluffy tail, and simple round spots along its back.",
+    coloringPrompt: {
+      midjourney: "cute baby fawn deer coloring page for toddlers 3-5 years old, thick bold black outlines, gentle smiling face, big ears, simple spots, pure white background, no shading --ar 17:22 --v 6.0",
+      dalle: "Coloring page of an adorable smiling baby fawn with simple spots, thick black line art, white background, no shading.",
+      imagen: "Simple toddler coloring book page of a cute baby deer, extra bold 6px clean black contours, white paper background."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby deer fawn in warm golden brown with white spots, sweet gentle face, flat vector cartoon, white background --ar 1:1 --v 6.0",
+      dalle: "Adorable cartoon baby fawn with soft fawn coat and cream spots, flat vector illustration on white.",
+      imagen: "Children's book baby deer with innocent eyes and cheerful smile, clean flat colors on white."
+    },
+    svgType: "deer"
+  },
+  {
+    id: 30,
+    name: "Raccoon",
+    category: "Forest",
+    funFact: "Raccoons have super nimble little paws that can wash their snacks in bubbling forest streams!",
+    colorPalette: [
+      { name: "Silver Gray", hex: "#CED4DA" },
+      { name: "Dark Mask", hex: "#495057" },
+      { name: "Soft White", hex: "#FFFFFF" },
+      { name: "Forest Mint", hex: "#95D5B2" }
+    ],
+    description: "Cute smiling baby raccoon with iconic bandit eye-mask markings, rounded ears, striped fluffy tail, and sweet paws.",
+    coloringPrompt: {
+      midjourney: "cute baby raccoon coloring page for toddlers, extra thick 6pt outlines, bandit mask on face, striped tail, happy smile, pure white background, clean line art --ar 17:22 --v 6.0",
+      dalle: "Toddler coloring book page of a cute smiling raccoon with simple mask and striped tail, thick black outlines, white background.",
+      imagen: "Delightful toddler coloring book sheet of a friendly baby raccoon, ultra thick clean outlines on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby raccoon with dark eye mask and striped tail, smiling cheerfully, flat vector art, white background --ar 1:1 --v 6.0",
+      dalle: "Sweet cartoon baby raccoon with soft gray fur and dark mask, flat vector style on white.",
+      imagen: "Children's book baby raccoon with friendly expression, clean flat colors on white."
+    },
+    svgType: "raccoon"
+  },
+  {
+    id: 31,
+    name: "Beaver",
+    category: "Forest",
+    funFact: "Beavers build amazing cozy lodges with hidden underwater doorways!",
+    colorPalette: [
+      { name: "Chestnut Brown", hex: "#7F4F24" },
+      { name: "Warm Maple", hex: "#A68A64" },
+      { name: "Pond Blue", hex: "#8ECAE6" },
+      { name: "Cheery Yellow", hex: "#FFB703" }
+    ],
+    description: "Chubby smiling baby beaver holding a little twig, two cute white front teeth peeking out, and a wide waffle-pattern paddle tail.",
+    coloringPrompt: {
+      midjourney: "cute baby beaver coloring book page for toddlers, thick bold outlines, holding a twig, two cute front teeth, paddle tail, pure white background, clean line art --ar 17:22 --v 6.0",
+      dalle: "Preschool coloring page of a cute smiling baby beaver with little twig, thick black lines, simple shapes, white background.",
+      imagen: "Simple toddler coloring book page of an adorable baby beaver, extra thick clean outlines on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby beaver in chestnut brown holding a green sprig, flat vector cartoon, white background --ar 1:1 --v 6.0",
+      dalle: "Adorable cartoon baby beaver with round tummy and cute smile, flat vector illustration on white.",
+      imagen: "Children's book baby beaver with playful expression, clean flat colors on white."
+    },
+    svgType: "beaver"
+  },
+  {
+    id: 32,
+    name: "Sloth",
+    category: "Wild",
+    funFact: "Sloths love moving in joyful slow motion and taking relaxing tree-top siestas!",
+    colorPalette: [
+      { name: "Muted Tan", hex: "#D6CCC2" },
+      { name: "Coffee Brown", hex: "#8D6E63" },
+      { name: "Jungle Green", hex: "#52B788" },
+      { name: "Gentle Pink", hex: "#F7D1CD" }
+    ],
+    description: "Sweet smiling baby sloth hanging upside down peacefully from a sturdy tree branch with rounded claws, happy sleepy curved eyes.",
+    coloringPrompt: {
+      midjourney: "cute baby sloth hanging from tree branch coloring page for toddlers 3 years old, thick bold black outlines, simple shapes, sweet smile, pure white background --ar 17:22 --v 6.0",
+      dalle: "Toddler coloring book page of a cute smiling sloth hanging on a branch, thick black outlines, white background, no shading.",
+      imagen: "Delightful toddler coloring book sheet of a sleepy smiling baby sloth on a branch, clean bold outlines on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby sloth hanging from green branch, soft tan fur and sweet smile, flat vector cartoon, white background --ar 1:1 --v 6.0",
+      dalle: "Sweet cartoon baby sloth in warm tan hanging gently on a branch, flat vector on white.",
+      imagen: "Children's book baby sloth with cozy smile, clean flat colors on white."
+    },
+    svgType: "sloth"
+  },
+  {
+    id: 33,
+    name: "Cow",
+    category: "Farm",
+    funFact: "Cows have best friends in their herd and become extra joyful when they munch grass together!",
+    colorPalette: [
+      { name: "Milky White", hex: "#FFFFFF" },
+      { name: "Chocolate Patch", hex: "#4A4E69" },
+      { name: "Rosy Muzzle", hex: "#FFC6FF" },
+      { name: "Bell Gold", hex: "#FFD166" }
+    ],
+    description: "Lovable chubby baby cow calf with a pink heart-shaped muzzle, big friendly eyes, rounded ears, and cute simple spot patches.",
+    coloringPrompt: {
+      midjourney: "cute baby calf cow coloring page for toddlers 3-5 years old, thick bold black outlines, simple spots, smiling face, little bell on neck, pure white background, no shading --ar 17:22 --v 6.0",
+      dalle: "Preschool coloring page of an adorable smiling baby cow with simple spots, thick black line art, white background.",
+      imagen: "Simple toddler coloring book page of a happy cartoon baby cow, extra thick 6px outlines on white paper."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby cow calf with pink muzzle and chocolate spots, smiling happily, flat vector cartoon, white background --ar 1:1 --v 6.0",
+      dalle: "Adorable cartoon baby cow with rosy nose and soft spots, flat vector illustration on white.",
+      imagen: "Children's book baby calf with friendly eyes, clean flat colors on white."
+    },
+    svgType: "cow"
+  },
+  {
+    id: 34,
+    name: "Horse",
+    category: "Farm",
+    funFact: "Horses can sleep both standing up or curled up in fresh, fragrant golden straw!",
+    colorPalette: [
+      { name: "Golden Chestnut", hex: "#D4A373" },
+      { name: "Flaxen Cream", hex: "#FAEDCD" },
+      { name: "Meadow Green", hex: "#A7C957" },
+      { name: "Blush Pink", hex: "#FFCCD5" }
+    ],
+    description: "Playful baby horse foal with fluffy rounded mane, cute little tail, white star marking on forehead, and friendly smile.",
+    coloringPrompt: {
+      midjourney: "cute baby pony foal horse coloring page for toddlers, extra thick 6pt outlines, simple mane, happy smile, pure white background, clean line art --ar 17:22 --v 6.0",
+      dalle: "Toddler coloring book page of a cute smiling pony foal, thick black outlines, simple shapes, white background.",
+      imagen: "Delightful toddler coloring book sheet of a cheerful baby horse, ultra thick clean outlines on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby pony foal in caramel chestnut with creamy mane, smiling sweetly, flat vector art, white background --ar 1:1 --v 6.0",
+      dalle: "Sweet cartoon baby horse with golden coat and friendly smile, flat vector style on white.",
+      imagen: "Children's book baby pony with joyful expression, clean flat colors on white."
+    },
+    svgType: "horse"
+  },
+  {
+    id: 35,
+    name: "Baby Chick",
+    category: "Farm",
+    funFact: "Baby chicks make soft 'cheep-cheep' peeps to tell their mama hen that they are happy!",
+    colorPalette: [
+      { name: "Sunny Lemon", hex: "#FFEE88" },
+      { name: "Orange Beak", hex: "#F77F00" },
+      { name: "Eggshell White", hex: "#FFFFFF" },
+      { name: "Cheek Blush", hex: "#FFAAA6" }
+    ],
+    description: "Cute round fluffy baby chick sitting in a cracked eggshell, wearing half the eggshell as a hat, with tiny flapping wings and peeping beak.",
+    coloringPrompt: {
+      midjourney: "cute baby chick in eggshell coloring page for toddlers 3 years old, thick bold black outlines, round fluffy body, happy smile, pure white background --ar 17:22 --v 6.0",
+      dalle: "Coloring page of an adorable fluffy baby chick wearing an eggshell hat, thick black lines, white background, no shading.",
+      imagen: "Simple toddler coloring book page of a smiling baby chick in cracked egg, extra bold clean outlines on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby chick in bright yellow with eggshell hat, cheerful smile, flat vector cartoon, white background --ar 1:1 --v 6.0",
+      dalle: "Adorable cartoon baby chick in sunny yellow with orange beak, flat vector on white.",
+      imagen: "Children's book fluffy baby chick with joyful eyes, clean flat colors on white."
+    },
+    svgType: "chick"
+  },
+  {
+    id: 36,
+    name: "Parrot",
+    category: "Birds",
+    funFact: "Parrots love to bob their heads and dance whenever they hear cheerful music!",
+    colorPalette: [
+      { name: "Tropical Emerald", hex: "#2EC4B6" },
+      { name: "Sunshine Yellow", hex: "#FFBF69" },
+      { name: "Coral Red", hex: "#FF9F1C" },
+      { name: "Sky Aqua", hex: "#CBF3F0" }
+    ],
+    description: "Friendly tropical baby parrot perched on a small branch, feather crest on head, curved smiling beak, and big bright cartoon eyes.",
+    coloringPrompt: {
+      midjourney: "cute baby parrot bird coloring page for toddlers, extra thick 6pt outlines, simple feathers, perched on branch, happy face, pure white background --ar 17:22 --v 6.0",
+      dalle: "Toddler coloring book page of a cute smiling parrot bird, thick black outlines, simple shapes, white background.",
+      imagen: "Delightful toddler coloring book sheet of a cheerful baby parrot, ultra thick clean outlines on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby parrot in emerald green and sunny yellow, smiling happily, flat vector cartoon, white background --ar 1:1 --v 6.0",
+      dalle: "Sweet cartoon baby parrot in bright tropical colors, flat vector illustration on white.",
+      imagen: "Children's book cheerful baby parrot with colorful feathers, clean flat colors on white."
+    },
+    svgType: "parrot"
+  },
+  {
+    id: 37,
+    name: "Flamingo",
+    category: "Birds",
+    funFact: "Flamingos love balancing effortlessly on just one leg like a pink ballerina!",
+    colorPalette: [
+      { name: "Pastel Pink", hex: "#FFB4A2" },
+      { name: "Rose Quartz", hex: "#E5989B" },
+      { name: "Warm Yellow", hex: "#FFE66D" },
+      { name: "Gentle Teal", hex: "#83C5BE" }
+    ],
+    description: "Graceful smiling baby flamingo standing on one leg with head tilted adorably, curved heart-shaped neck, and sweet curved beak.",
+    coloringPrompt: {
+      midjourney: "cute baby flamingo standing on one leg coloring page for toddlers 3-5 years old, thick bold black outlines, simple heart neck, smiling face, pure white background --ar 17:22 --v 6.0",
+      dalle: "Preschool coloring page of an adorable smiling baby flamingo, thick black lines, simple shapes, white background.",
+      imagen: "Simple toddler coloring book page of a happy baby flamingo, extra thick clean black outlines on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby flamingo in soft pastel pink, heart shaped curve, smiling happily, flat vector art, white background --ar 1:1 --v 6.0",
+      dalle: "Adorable cartoon baby flamingo in blush pink with cheerful smile, flat vector on white.",
+      imagen: "Children's book baby flamingo standing on one leg, clean flat colors on white."
+    },
+    svgType: "flamingo"
+  },
+  {
+    id: 38,
+    name: "Frog",
+    category: "Reptiles",
+    funFact: "Frogs do high-flying gymnastics leaps that can be twenty times their own body length!",
+    colorPalette: [
+      { name: "Clover Green", hex: "#70E000" },
+      { name: "Butter Tummy", hex: "#CCFF33" },
+      { name: "Lily Pad Pink", hex: "#FF99C8" },
+      { name: "Crown Gold", hex: "#FFD166" }
+    ],
+    description: "Cute round tree frog sitting happily on a rounded lily pad wearing a tiny golden crown, big wide smile and shiny round eyes.",
+    coloringPrompt: {
+      midjourney: "cute baby frog on lily pad with tiny crown coloring page for toddlers, extra thick 6pt bold black outlines, big round eyes, wide happy smile, pure white background --ar 17:22 --v 6.0",
+      dalle: "Toddler coloring book page of a cute smiling green frog on a lily pad, thick black outlines, white background, no shading.",
+      imagen: "Delightful toddler coloring book sheet of a happy round frog, ultra thick clean outlines on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby frog in bright clover green with yellow belly, smiling on lily pad, flat vector cartoon, white background --ar 1:1 --v 6.0",
+      dalle: "Sweet cartoon baby frog with huge friendly eyes and tiny crown, flat vector illustration on white.",
+      imagen: "Children's book cheerful baby frog in bright lime green, clean flat colors on white."
+    },
+    svgType: "frog"
+  },
+  {
+    id: 39,
+    name: "Chameleon",
+    category: "Reptiles",
+    funFact: "Chameleons can look in two different directions at the very same time with their swivel eyes!",
+    colorPalette: [
+      { name: "Mint Emerald", hex: "#52B788" },
+      { name: "Sky Azure", hex: "#74C69D" },
+      { name: "Lemon Glow", hex: "#FFF3B0" },
+      { name: "Coral Cheek", hex: "#E76F51" }
+    ],
+    description: "Adorable smiling baby chameleon perched on a twig with a cute tight spiral curly tail, big round swivel eye, and sweet happy grin.",
+    coloringPrompt: {
+      midjourney: "cute baby chameleon with curled spiral tail coloring page for toddlers 3-5 years old, thick bold black outlines, simple shapes, happy smile, pure white background --ar 17:22 --v 6.0",
+      dalle: "Coloring page of an adorable smiling chameleon with curly tail, thick black lines, white background, no shading.",
+      imagen: "Simple toddler coloring book page of a cute baby chameleon on a branch, extra thick 6px clean outlines on white."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby chameleon with spiral tail, vibrant mint green and pastel yellow, smiling happily, flat vector art, white background --ar 1:1 --v 6.0",
+      dalle: "Adorable cartoon baby chameleon with curly tail and big friendly eye, flat vector on white.",
+      imagen: "Children's book baby chameleon with playful smile, clean flat colors on white."
+    },
+    svgType: "chameleon"
+  },
+  {
+    id: 40,
+    name: "Baby Dino",
+    category: "Wild",
+    funFact: "Baby dinosaurs hatched from eggs nestled in giant cozy leafy nests made with love!",
+    colorPalette: [
+      { name: "Pastel Teal", hex: "#64DFDF" },
+      { name: "Soft Mint", hex: "#72EFDD" },
+      { name: "Sunny Gold", hex: "#FFD166" },
+      { name: "Heart Rose", hex: "#FF85A1" }
+    ],
+    description: "Friendly baby long-neck brontosaurus with big gentle eyes, round spots on back, a heart marking, and a sweet cheerful toddler smile.",
+    coloringPrompt: {
+      midjourney: "cute baby dinosaur brontosaurus coloring page for toddlers 3-5 years old, extra thick 6pt bold black outlines, long gentle neck, simple spots, smiling face, pure white background --ar 17:22 --v 6.0",
+      dalle: "Toddler coloring book page of a cute smiling baby dinosaur, thick black outlines, simple shapes, white background, no shading.",
+      imagen: "Delightful toddler coloring book sheet of a gentle smiling baby dino, ultra thick clean outlines on white paper."
+    },
+    referencePrompt: {
+      midjourney: "cute kawaii baby brontosaurus dinosaur in pastel teal and yellow spots, smiling happily, flat vector cartoon, white background --ar 1:1 --v 6.0",
+      dalle: "Sweet cartoon baby dinosaur with friendly eyes and soft spots, flat vector style on white.",
+      imagen: "Children's book baby dinosaur with gentle smile, clean flat colors on white."
+    },
+    svgType: "dino"
   }
 ];
 
@@ -457,9 +985,10 @@ export const ANIMALS_DATA: AnimalData[] = [
 // 1. Cover
 // 2. Welcome page
 // 3. Animal 1 (Elephant)
-// 4. Blank Page
+// 4. Blank Page Bleed Barrier
 // ...
-// 37. Animal 18 (Turtle)
-// 38. Blank Page
-// 39. Bonus Completion Certificate
-export const TOTAL_PAGES_COUNT = 2 + (ANIMALS_DATA.length * 2) + 1; // 39 pages total
+// 81. Animal 40 (Baby Dino)
+// 82. Blank Page Bleed Barrier
+// 83. Super Colorist Completion Certificate / Diploma
+// TOTAL_PAGES_COUNT = 2 + (40 * 2) + 1 = 83 pages! (Combining both blank & coloring pages gives 80 pages!)
+export const TOTAL_PAGES_COUNT = 2 + (ANIMALS_DATA.length * 2) + 1; // 83 pages total

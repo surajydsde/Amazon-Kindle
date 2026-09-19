@@ -1,5 +1,6 @@
 import React from 'react';
 import { Award, Sparkles, Star, Trophy, Heart } from 'lucide-react';
+import { ANIMALS_DATA } from '../data/animals';
 
 interface CertificatePageProps {
   pageNumber: number;
@@ -65,7 +66,7 @@ export const CertificatePage: React.FC<CertificatePageProps> = ({ pageNumber, sh
           </div>
 
           <p className="mt-4 text-xs sm:text-sm font-semibold text-slate-600 max-w-md mx-auto">
-            For successfully coloring all 18 friendly animals in <br />
+            For successfully coloring all {ANIMALS_DATA.length} friendly animals in <br />
             <strong className="text-indigo-900">"My First Cute Animal Coloring Book"</strong> <br />
             with wonderful imagination, bright colors, and joyful energy!
           </p>
