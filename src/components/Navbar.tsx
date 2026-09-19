@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageViewMode } from '../types';
+import { ANIMALS_DATA, TOTAL_PAGES_COUNT } from '../data/animals';
 import {
   BookOpen,
   ChevronLeft,
@@ -62,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </span>
               </div>
               <p className="text-[11px] text-slate-500 font-medium hidden sm:block">
-                18 Fun and Easy Animals for Kids Ages 3–5 • Print-Ready Manuscript
+                {ANIMALS_DATA.length} Fun and Easy Animals for Kids Ages 3–5 • {TOTAL_PAGES_COUNT} Pages Print-Ready Manuscript
               </p>
             </div>
           </div>
@@ -172,10 +173,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   ? 'bg-white text-slate-900 shadow-2xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
-              title="39-Page Grid Overview"
+              title={`${TOTAL_PAGES_COUNT}-Page Grid Overview`}
             >
               <Grid size={13} />
-              <span className="hidden sm:inline">39 Pages</span>
+              <span className="hidden sm:inline">{TOTAL_PAGES_COUNT} Pages</span>
             </button>
           </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ANIMALS_DATA } from '../data/animals';
+import { ANIMALS_DATA, TOTAL_PAGES_COUNT } from '../data/animals';
 import { AnimalVector } from './AnimalVectors';
 import { BookOpen, ShieldCheck, Award, Sparkles } from 'lucide-react';
 
@@ -12,7 +12,7 @@ export const BookGridOverview: React.FC<BookGridOverviewProps> = ({
   currentPageIndex,
   onSelectPage
 }) => {
-  // Assemble the 39 items
+  // Assemble the pages
   const pages = [
     { type: 'cover', title: 'Front Cover', animalIndex: -1 },
     { type: 'welcome', title: 'Welcome / Belongs To', animalIndex: -1 },
@@ -29,7 +29,7 @@ export const BookGridOverview: React.FC<BookGridOverviewProps> = ({
         <div>
           <h2 className="text-xl font-black text-slate-900 font-heading flex items-center gap-2">
             <BookOpen size={20} className="text-amber-500" />
-            <span>Complete 39-Page Manuscript Grid</span>
+            <span>Complete {TOTAL_PAGES_COUNT}-Page Manuscript Grid</span>
           </h2>
           <p className="text-xs text-slate-600">
             Ordered in exact Amazon KDP sequence: Cover → Welcome → Animal Coloring → Blank Bleed Guard → Certificate
@@ -39,11 +39,11 @@ export const BookGridOverview: React.FC<BookGridOverviewProps> = ({
         <div className="flex items-center gap-3 text-xs font-bold">
           <div className="flex items-center gap-1.5 text-indigo-700">
             <span className="w-3 h-3 rounded-sm bg-indigo-500" />
-            <span>Coloring Pages (18)</span>
+            <span>Coloring Pages ({ANIMALS_DATA.length})</span>
           </div>
           <div className="flex items-center gap-1.5 text-slate-500">
             <span className="w-3 h-3 rounded-sm bg-slate-200" />
-            <span>Blank Protectors (18)</span>
+            <span>Blank Protectors ({ANIMALS_DATA.length})</span>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ export const BookGridOverview: React.FC<BookGridOverviewProps> = ({
                     <div className="w-10 h-10 my-1">
                       <AnimalVector type="lion" isColored={true} />
                     </div>
-                    <span className="text-[7px] text-slate-600 font-bold">18 Animals</span>
+                    <span className="text-[7px] text-slate-600 font-bold">{ANIMALS_DATA.length} Animals</span>
                   </div>
                 )}
 

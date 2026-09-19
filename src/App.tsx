@@ -63,15 +63,15 @@ export default function App() {
   };
 
   // Helper to render a specific page by index
-  const renderPage = (index: number) => {
+  const renderPage = (index: number, isPdfMode: boolean = false) => {
     if (index === 0) {
-      return <CoverPage showKdpGuides={showKdpGuides} />;
+      return <CoverPage showKdpGuides={showKdpGuides && !isPdfMode} isPdfMode={isPdfMode} />;
     }
     if (index === 1) {
-      return <WelcomePage showKdpGuides={showKdpGuides} />;
+      return <WelcomePage showKdpGuides={showKdpGuides && !isPdfMode} isPdfMode={isPdfMode} />;
     }
     if (index === TOTAL_PAGES_COUNT - 1) {
-      return <CertificatePage pageNumber={TOTAL_PAGES_COUNT} showKdpGuides={showKdpGuides} />;
+      return <CertificatePage pageNumber={TOTAL_PAGES_COUNT} showKdpGuides={showKdpGuides && !isPdfMode} isPdfMode={isPdfMode} />;
     }
 
     // Animals start on page index 2 (Page 3 of book)
@@ -88,13 +88,14 @@ export default function App() {
           <AnimalColoringPage
             animal={animal}
             pageNumber={index + 1}
-            showKdpGuides={showKdpGuides}
+            showKdpGuides={showKdpGuides && !isPdfMode}
             onOpenColorStudio={(a) => setActiveStudioAnimal(a)}
             onDownloadPdf={() => setShowPdfModal(true)}
+            isPdfMode={isPdfMode}
           />
         );
       } else {
-        return <BlankPage pageNumber={index + 1} showKdpGuides={showKdpGuides} />;
+        return <BlankPage pageNumber={index + 1} showKdpGuides={showKdpGuides && !isPdfMode} isPdfMode={isPdfMode} />;
       }
     }
 
@@ -125,7 +126,7 @@ export default function App() {
             <FileDown size={14} className="text-white" />
           </div>
           <span className="font-semibold">
-            Looking for just the PDF file? Download the complete 39-page print-ready book directly to your computer.
+            Looking for just the PDF file? Download the complete {TOTAL_PAGES_COUNT}-page print-ready book directly to your computer.
           </span>
         </div>
 
@@ -152,7 +153,7 @@ export default function App() {
       <div className="no-print bg-amber-100/70 border-b border-amber-200 py-1.5 px-4 text-center text-xs font-semibold text-amber-900 flex items-center justify-center gap-2">
         <Sparkles size={14} className="text-amber-600" />
         <span>
-          Amazon KDP Spec: <strong>8.5" × 11" US Letter</strong> • <strong>Single-Sided</strong> (18 Activities + 18 Bleed-Guard Blank Pages) • <strong>Thick 6px Outlines</strong>
+          Amazon KDP Spec: <strong>8.5" × 11" US Letter</strong> • <strong>Single-Sided</strong> ({ANIMALS_DATA.length} Activities + {ANIMALS_DATA.length} Bleed-Guard Blank Pages • {TOTAL_PAGES_COUNT} Pages Total) • <strong>Thick 6px Outlines</strong>
         </span>
         <button
           onClick={() => setShowKdpModal(true)}
@@ -254,7 +255,7 @@ export default function App() {
           </div>
         )}
 
-        {/* VIEW 3: 39-PAGE GRID OVERVIEW */}
+        {/* VIEW 3: GRID OVERVIEW */}
         {viewMode === 'grid' && (
           <BookGridOverview
             currentPageIndex={currentPageIndex}
@@ -273,8 +274,13 @@ export default function App() {
         style={{ width: '816px' }}
       >
         {Array.from({ length: TOTAL_PAGES_COUNT }, (_, idx) => (
-          <div key={idx} id={`pdf-page-${idx}`} className="w-[816px] print:w-full print:max-w-[8.5in] print-page mb-8 print:mb-0">
-            {renderPage(idx)}
+          <div
+            key={idx}
+            id={`pdf-page-${idx}`}
+            className="w-[816px] h-[1056px] min-w-[816px] min-h-[1056px] max-w-[816px] max-h-[1056px] bg-white print:w-full print:max-w-[8.5in] print-page mb-8 print:mb-0 overflow-hidden box-border"
+            style={{ width: '816px', height: '1056px' }}
+          >
+            {renderPage(idx, true)}
           </div>
         ))}
       </div>

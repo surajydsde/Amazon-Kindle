@@ -5,17 +5,23 @@ import { ANIMALS_DATA, TOTAL_PAGES_COUNT } from '../data/animals';
 
 interface CoverPageProps {
   showKdpGuides?: boolean;
+  isPdfMode?: boolean;
 }
 
-export const CoverPage: React.FC<CoverPageProps> = ({ showKdpGuides = false }) => {
+export const CoverPage: React.FC<CoverPageProps> = ({ showKdpGuides = false, isPdfMode = false }) => {
   return (
     <div
       id="kdp-cover-page"
-      className="print-page relative w-full bg-gradient-to-b from-sky-300 via-amber-100 to-emerald-200 overflow-hidden shadow-2xl rounded-xl mx-auto flex flex-col justify-between text-slate-800 select-none"
-      style={{
-        aspectRatio: '8.5 / 11',
-        maxWidth: '720px'
-      }}
+      className={
+        isPdfMode
+          ? "pdf-page-container relative w-[816px] h-[1056px] bg-gradient-to-b from-sky-300 via-amber-100 to-emerald-200 overflow-hidden flex flex-col justify-between text-slate-800 select-none"
+          : "print-page relative w-full bg-gradient-to-b from-sky-300 via-amber-100 to-emerald-200 overflow-hidden shadow-2xl rounded-xl mx-auto flex flex-col justify-between text-slate-800 select-none"
+      }
+      style={
+        isPdfMode
+          ? { width: '816px', height: '1056px', boxSizing: 'border-box' }
+          : { aspectRatio: '8.5 / 11', maxWidth: '720px' }
+      }
     >
       {/* Amazon KDP Safe Zone & Margin Overlay (toggleable) */}
       {showKdpGuides && (

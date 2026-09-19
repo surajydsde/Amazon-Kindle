@@ -34,7 +34,23 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
   const [downloadSuccess, setDownloadSuccess] = useState<string | null>(null);
   const [downloadError, setDownloadError] = useState<string | null>(null);
 
-  // Helper to compile page list
+  // KDP Interior Manuscript (82 Pages: Welcome + 40 Animals + 40 Blanks + Certificate) - Excludes Cover
+  const getKdpInteriorPages = (): PageToRender[] => {
+    const list: PageToRender[] = [
+      { elementId: 'pdf-page-1', title: 'Welcome / Belongs To' }
+    ];
+
+    ANIMALS_DATA.forEach((animal, idx) => {
+      const coloringIdx = 2 + idx * 2;
+      const blankIdx = coloringIdx + 1;
+      list.push({ elementId: `pdf-page-${coloringIdx}`, title: `${animal.name} Coloring Page` });
+      list.push({ elementId: `pdf-page-${blankIdx}`, title: `${animal.name} Blank Bleed Guard` });
+    });
+
+    list.push({ elementId: `pdf-page-${TOTAL_PAGES_COUNT - 1}`, title: 'Super Colorist Certificate' });
+    return list;
+  };
+
   const getFullBookPages = (): PageToRender[] => {
     const list: PageToRender[] = [
       { elementId: 'pdf-page-0', title: 'Front Cover' },
@@ -70,7 +86,40 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
     return list;
   };
 
-  // 1. Download Full 39-Page PDF
+  // 1. Download KDP Interior Manuscript (No Bleed, 82 Pages, no cover)
+  const handleDownloadKdpInterior = async () => {
+    setIsGenerating(true);
+    setDownloadSuccess(null);
+    setDownloadError(null);
+    const pages = getKdpInteriorPages();
+    const success = await downloadPagesAsPdf({
+      pages,
+      fileName: `Cute-Animals-Coloring-Book-KDP-Interior-${pages.length}Pages-NoBleed.pdf`,
+      onProgress: (p) => setProgress(p)
+    });
+    setIsGenerating(false);
+    if (success) {
+      setDownloadSuccess(`Amazon KDP Interior Manuscript (${pages.length} Pages, No Bleed) downloaded successfully! Ready for KDP manuscript upload.`);
+    } else {
+      setDownloadError('Could not compile interior pages automatically. You can also use "Save as PDF via Browser Print" below.');
+    }
+  };
+
+  // 2. Download Front Cover PDF
+  const handleDownloadCover = async () => {
+    setIsGenerating(true);
+    setDownloadSuccess(null);
+    setDownloadError(null);
+    const success = await downloadSingleElementPdf('pdf-page-0', 'Cute-Animals-Coloring-Book-Front-Cover-8.5x11.pdf');
+    setIsGenerating(false);
+    if (success) {
+      setDownloadSuccess('Front Cover 8.5" × 11" PDF downloaded successfully! (Upload to KDP Cover section or design tools).');
+    } else {
+      setDownloadError('Failed to download cover PDF. Please try again.');
+    }
+  };
+
+  // 3. Download Full Book PDF with Cover
   const handleDownloadFullBook = async () => {
     setIsGenerating(true);
     setDownloadSuccess(null);
@@ -78,18 +127,18 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
     const pages = getFullBookPages();
     const success = await downloadPagesAsPdf({
       pages,
-      fileName: 'My-First-Cute-Animal-Coloring-Book-39Pages.pdf',
+      fileName: `My-First-Cute-Animal-Coloring-Book-${TOTAL_PAGES_COUNT}Pages-Complete.pdf`,
       onProgress: (p) => setProgress(p)
     });
     setIsGenerating(false);
     if (success) {
-      setDownloadSuccess('Complete 39-Page Coloring Book PDF downloaded successfully!');
+      setDownloadSuccess(`Complete ${TOTAL_PAGES_COUNT}-Page Coloring Book PDF downloaded successfully!`);
     } else {
-      setDownloadError('Could not compile all pages automatically. You can also use "Save as PDF via Browser Print" below for instant 100% vector printing.');
+      setDownloadError('Could not compile all pages automatically. You can also use "Save as PDF via Browser Print" below.');
     }
   };
 
-  // 2. Download 18 Animals Only PDF
+  // 4. Download Animals Only PDF
   const handleDownloadAnimalsOnly = async () => {
     setIsGenerating(true);
     setDownloadSuccess(null);
@@ -97,18 +146,18 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
     const pages = getAnimalsOnlyPages();
     const success = await downloadPagesAsPdf({
       pages,
-      fileName: '18-Cute-Animals-Coloring-Sheets.pdf',
+      fileName: `${ANIMALS_DATA.length}-Cute-Animals-Coloring-Sheets.pdf`,
       onProgress: (p) => setProgress(p)
     });
     setIsGenerating(false);
     if (success) {
-      setDownloadSuccess('18 Animals Coloring Sheets PDF downloaded successfully!');
+      setDownloadSuccess(`${ANIMALS_DATA.length} Animals Coloring Sheets PDF downloaded successfully!`);
     } else {
       setDownloadError('Failed to generate animal sheets PDF. Please try again or use the browser print option below.');
     }
   };
 
-  // 3. Download Activity Pack (20 pages)
+  // 5. Download Activity Pack
   const handleDownloadActivityPack = async () => {
     setIsGenerating(true);
     setDownloadSuccess(null);
@@ -116,18 +165,18 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
     const pages = getActivityPackPages();
     const success = await downloadPagesAsPdf({
       pages,
-      fileName: 'Cute-Animal-Activity-Pack-20Pages.pdf',
+      fileName: `Cute-Animal-Activity-Pack-${ANIMALS_DATA.length + 2}Pages.pdf`,
       onProgress: (p) => setProgress(p)
     });
     setIsGenerating(false);
     if (success) {
-      setDownloadSuccess('20-Page Activity Pack PDF downloaded successfully!');
+      setDownloadSuccess(`${ANIMALS_DATA.length + 2}-Page Activity Pack PDF downloaded successfully!`);
     } else {
       setDownloadError('Failed to generate activity pack PDF. Please try again or use the browser print option below.');
     }
   };
 
-  // 4. Download Current Page PDF
+  // 6. Download Current Page PDF
   const handleDownloadCurrentPage = async () => {
     setIsGenerating(true);
     setDownloadSuccess(null);
@@ -188,7 +237,7 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
                 <span>
                   {progress?.status === 'compiling'
                     ? 'Packaging your PDF file...'
-                    : `Rendering Page ${progress?.currentPage || 1} of ${progress?.totalPages || 39}...`}
+                    : `Rendering Page ${progress?.currentPage || 1} of ${progress?.totalPages || TOTAL_PAGES_COUNT}...`}
                 </span>
               </div>
 
@@ -233,44 +282,126 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
           {/* Download Options Grid */}
           {!isGenerating && (
             <div className="space-y-3">
-              <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+              {/* Amazon KDP No-Bleed Setup Guide Banner */}
+              <div className="bg-emerald-50 border border-emerald-300 rounded-2xl p-4 text-xs text-emerald-950 shadow-2xs">
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 size={18} className="text-emerald-600 shrink-0 mt-0.5" />
+                  <div className="space-y-1">
+                    <strong className="font-bold text-emerald-950 text-sm block">
+                      Amazon KDP "No Bleed" Preflight Resolution:
+                    </strong>
+                    <p className="text-emerald-900 leading-relaxed">
+                      If Amazon KDP's previewer warned that content was cut off or flagged bleed issues, here is the exact solution:
+                    </p>
+                    <ul className="list-disc list-inside space-y-1 text-emerald-800 font-medium mt-1">
+                      <li>
+                        <strong>Select 8.5" × 11" Trim Size & "No Bleed":</strong> On KDP Step 2 (Paperback Content), select <strong>8.5" × 11"</strong> and <strong>No Bleed</strong>.
+                      </li>
+                      <li>
+                        <strong>Upload Manuscript Separately from Cover:</strong> Amazon KDP requires the interior manuscript to NOT include the cover. Download <strong>Option 1 (Interior Manuscript • 82 Pages)</strong> below — it excludes the colored cover and provides strict 0.50" (48px) safe white margins on every page (exceeding KDP's 0.375" minimum).
+                      </li>
+                      <li>
+                        <strong>Upload Cover in Step 3:</strong> Download <strong>Option 2 (Front Cover)</strong> to use in KDP's separate "Book Cover" section.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-xs font-bold text-slate-400 uppercase tracking-wider pt-1">
                 Select Your PDF Download:
               </div>
 
-              {/* OPTION 1: FULL 39-PAGE MANUSCRIPT */}
-              <div className="bg-amber-50/70 hover:bg-amber-50 border-2 border-amber-300 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-colors shadow-xs">
+              {/* OPTION 1: KDP INTERIOR MANUSCRIPT (RECOMMENDED FOR AMAZON KDP) */}
+              <div className="bg-amber-50/80 hover:bg-amber-50 border-2 border-amber-400 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-colors shadow-xs">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
                     <BookOpen size={20} />
                   </div>
                   <div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-wrap">
                       <strong className="text-slate-900 font-heading text-sm sm:text-base">
-                        Full Coloring Book PDF (39 Pages)
+                        Amazon KDP Interior Manuscript ({TOTAL_PAGES_COUNT - 1} Pages • No Bleed)
                       </strong>
-                      <span className="bg-amber-200 text-amber-900 text-[10px] font-black px-2 py-0.5 rounded-full">
-                        Recommended
+                      <span className="bg-emerald-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full">
+                        KDP Upload Ready
                       </span>
                     </div>
                     <p className="text-xs text-slate-600 mt-0.5">
-                      Front Cover + Welcome + 18 Animals + 18 Blank Bleed-Guards + Completion Diploma.
+                      Welcome + {ANIMALS_DATA.length} Animals + {ANIMALS_DATA.length} Blank Bleed-Guards + Certificate.
                     </p>
-                    <span className="text-[11px] text-amber-700 font-bold block mt-1">
-                      Exact Amazon KDP 8.5" × 11" print-ready interior & single-sided sequence.
+                    <span className="text-[11px] text-amber-800 font-bold block mt-1">
+                      ✓ No cover included • Strict 0.50" safe margin on every page • Zero full-bleed color • Passes KDP No Bleed review.
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleDownloadKdpInterior}
+                  className="w-full sm:w-auto px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-transform active:scale-95 shrink-0"
+                >
+                  <Download size={15} />
+                  <span>Download Interior ({TOTAL_PAGES_COUNT - 1}p)</span>
+                </button>
+              </div>
+
+              {/* OPTION 2: STANDALONE FRONT COVER */}
+              <div className="bg-white hover:bg-sky-50/50 border border-sky-200 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-colors">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center shrink-0 mt-0.5">
+                    <Layers size={20} />
+                  </div>
+                  <div>
+                    <strong className="text-slate-900 font-heading text-sm">
+                      Front Book Cover Art PDF (8.5" × 11" High-Res)
+                    </strong>
+                    <p className="text-xs text-slate-600 mt-0.5">
+                      Standalone high-resolution front cover for Amazon KDP Step 3 ("Book Cover") or graphic tools.
+                    </p>
+                    <span className="text-[11px] text-sky-700 font-bold block mt-0.5">
+                      Upload into KDP Cover Creator or combine into your wrap-around paperback cover spread.
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleDownloadCover}
+                  className="w-full sm:w-auto px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 shadow-xs transition-transform active:scale-95 shrink-0"
+                >
+                  <Download size={14} />
+                  <span>Download Cover</span>
+                </button>
+              </div>
+
+              {/* OPTION 3: COMPLETE KEEPSAKE BOOK (WITH COVER) */}
+              <div className="bg-white hover:bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-colors">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
+                    <FileText size={20} />
+                  </div>
+                  <div>
+                    <strong className="text-slate-900 font-heading text-sm">
+                      Complete Keepsake Book PDF ({TOTAL_PAGES_COUNT} Pages with Cover)
+                    </strong>
+                    <p className="text-xs text-slate-600 mt-0.5">
+                      Front Cover + All {TOTAL_PAGES_COUNT - 1} Interior Pages in one single digital document.
+                    </p>
+                    <span className="text-[11px] text-purple-700 font-semibold block mt-0.5">
+                      Ideal for personal digital reading or tablet coloring (not for KDP interior manuscript).
                     </span>
                   </div>
                 </div>
 
                 <button
                   onClick={handleDownloadFullBook}
-                  className="w-full sm:w-auto px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-transform active:scale-95 shrink-0"
+                  className="w-full sm:w-auto px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 shadow-xs transition-transform active:scale-95 shrink-0"
                 >
-                  <Download size={15} />
-                  <span>Download .PDF</span>
+                  <Download size={14} />
+                  <span>Download Complete ({TOTAL_PAGES_COUNT}p)</span>
                 </button>
               </div>
 
-              {/* OPTION 2: 18 ANIMALS ONLY */}
+              {/* OPTION 4: ANIMALS ONLY */}
               <div className="bg-white hover:bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-colors">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0 mt-0.5">
@@ -278,13 +409,13 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
                   </div>
                   <div>
                     <strong className="text-slate-900 font-heading text-sm">
-                      18 Animal Coloring Sheets Only PDF
+                      {ANIMALS_DATA.length} Animal Coloring Sheets Only PDF
                     </strong>
                     <p className="text-xs text-slate-600 mt-0.5">
-                      Contains only the 18 animal activities (no blank pages, no cover).
+                      Contains only the {ANIMALS_DATA.length} animal activities (no blank pages, no cover).
                     </p>
                     <span className="text-[11px] text-indigo-600 font-bold block mt-0.5">
-                      Fastest download, perfect for printing on home printers to save paper.
+                      Paper-saver home print pack.
                     </span>
                   </div>
                 </div>
@@ -294,36 +425,11 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
                   className="w-full sm:w-auto px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 shadow-xs transition-transform active:scale-95 shrink-0"
                 >
                   <Download size={14} />
-                  <span>Download (18p)</span>
+                  <span>Download ({ANIMALS_DATA.length}p)</span>
                 </button>
               </div>
 
-              {/* OPTION 3: 20-PAGE ACTIVITY PACK */}
-              <div className="bg-white hover:bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-colors">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
-                    <FileText size={20} />
-                  </div>
-                  <div>
-                    <strong className="text-slate-900 font-heading text-sm">
-                      Kids Activity Pack PDF (20 Pages)
-                    </strong>
-                    <p className="text-xs text-slate-600 mt-0.5">
-                      Welcome page + 18 Animals + Certificate (without blank bleed barrier pages).
-                    </p>
-                  </div>
-                </div>
-
-                <button
-                  onClick={handleDownloadActivityPack}
-                  className="w-full sm:w-auto px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 shadow-xs transition-transform active:scale-95 shrink-0"
-                >
-                  <Download size={14} />
-                  <span>Download (20p)</span>
-                </button>
-              </div>
-
-              {/* OPTION 4: CURRENT PAGE ONLY */}
+              {/* OPTION 5: CURRENT PAGE ONLY */}
               <div className="bg-white hover:bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition-colors">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center shrink-0 mt-0.5">
@@ -348,7 +454,7 @@ export const PdfDownloadModal: React.FC<PdfDownloadModalProps> = ({
                 </button>
               </div>
 
-              {/* OPTION 5: BROWSER VECTOR PRINT-TO-PDF */}
+              {/* OPTION 6: BROWSER VECTOR PRINT-TO-PDF */}
               <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-start gap-3">

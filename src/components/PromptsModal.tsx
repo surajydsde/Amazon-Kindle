@@ -95,7 +95,7 @@ export const PromptsModal: React.FC<PromptsModalProps> = ({ onClose }) => {
                 AI Image Generation Prompts Generator
               </h3>
               <p className="text-xs text-slate-400 font-medium">
-                Standardized prompts for all 18 animals & cover (Midjourney v6, Imagen 3, DALL-E 3)
+                Standardized prompts for all 40 animals & cover (Midjourney v6, Imagen 3, DALL-E 3)
               </p>
             </div>
           </div>
@@ -194,7 +194,7 @@ export const PromptsModal: React.FC<PromptsModalProps> = ({ onClose }) => {
             </div>
           </div>
 
-          {/* 18 Animals Prompts */}
+          {/* 40 Animals Prompts */}
           {filteredAnimals.map((animal) => {
             const pageNum = 3 + (animal.id - 1) * 2;
             const coloringPromptText = animal.coloringPrompt[selectedEngine];

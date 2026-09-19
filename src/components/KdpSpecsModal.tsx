@@ -6,6 +6,7 @@ import {
   KDP_BOOK_DESCRIPTION_HTML,
   calculateCoverDimensions
 } from '../data/kdpMetadata';
+import { ANIMALS_DATA, TOTAL_PAGES_COUNT } from '../data/animals';
 import {
   X,
   Copy,
@@ -25,7 +26,7 @@ interface KdpSpecsModalProps {
 
 export const KdpSpecsModal: React.FC<KdpSpecsModalProps> = ({ onClose }) => {
   const [paperType, setPaperType] = useState<'White' | 'Cream' | 'Premium Color'>('White');
-  const [pageCount, setPageCount] = useState<number>(38);
+  const [pageCount, setPageCount] = useState<number>(TOTAL_PAGES_COUNT - 1);
   const [activeTab, setActiveTab] = useState<'specs' | 'keywords' | 'description' | 'checklist'>('specs');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
@@ -125,11 +126,11 @@ export const KdpSpecsModal: React.FC<KdpSpecsModalProps> = ({ onClose }) => {
                       min={24}
                       max={120}
                       value={pageCount}
-                      onChange={(e) => setPageCount(Math.max(24, parseInt(e.target.value) || 38))}
+                      onChange={(e) => setPageCount(Math.max(24, parseInt(e.target.value) || (TOTAL_PAGES_COUNT - 1)))}
                       className="w-24 px-3 py-1.5 rounded-xl border border-slate-300 bg-white font-bold text-slate-800"
                     />
                     <span className="text-xs text-slate-500">
-                      (Default: 38 pages = Welcome + 18 Animals + 18 Blanks + Certificate)
+                      (Default: {TOTAL_PAGES_COUNT - 1} interior pages = Welcome + {ANIMALS_DATA.length} Animals + {ANIMALS_DATA.length} Blanks + Certificate. Cover uploaded separately).
                     </span>
                   </div>
                 </div>
@@ -337,17 +338,27 @@ export const KdpSpecsModal: React.FC<KdpSpecsModalProps> = ({ onClose }) => {
               {[
                 {
                   title: 'Page Dimensions: 8.5 x 11.0 inches (US Letter)',
-                  desc: 'Standard children coloring book format compliant with Amazon KDP print machinery.',
+                  desc: 'Standard children coloring book format compliant with Amazon KDP print machinery. (Select 8.5" x 11", not 8" x 11").',
+                  status: 'VERIFIED'
+                },
+                {
+                  title: 'Bleed Selection: "No Bleed" Compliant',
+                  desc: 'Every interior page features generous 0.50" (48px) safe white margins on all sides, well inside KDP\'s 0.375" minimum trim boundary. Zero content cut risk.',
+                  status: 'VERIFIED'
+                },
+                {
+                  title: 'Interior Manuscript Excludes Cover (82 Pages)',
+                  desc: 'Interior manuscript contains only pages 1–82 (Welcome, Animals, Blank Bleed Guards, Certificate). Cover is submitted separately in KDP Step 3.',
                   status: 'VERIFIED'
                 },
                 {
                   title: 'Single-Sided Pages with Blank Bleed Guards',
-                  desc: 'Every single coloring page is followed by a blank sheet (38 pages total) to eliminate marker bleed concerns.',
+                  desc: `Every single coloring page is followed by a blank sheet (${TOTAL_PAGES_COUNT - 1} interior pages total) to eliminate marker bleed concerns.`,
                   status: 'VERIFIED'
                 },
                 {
                   title: 'Line Weight: 4–6 px Equivalent Bold Outlines',
-                  desc: 'All 18 animals feature extra-thick rounded contours tailored for toddlers aged 3–5 with beginner motor skills.',
+                  desc: `All ${ANIMALS_DATA.length} animals feature extra-thick rounded contours tailored for toddlers aged 3–5 with beginner motor skills.`,
                   status: 'VERIFIED'
                 },
                 {

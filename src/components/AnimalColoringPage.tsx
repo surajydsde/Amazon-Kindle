@@ -9,6 +9,7 @@ interface AnimalColoringPageProps {
   showKdpGuides?: boolean;
   onOpenColorStudio?: (animal: AnimalData) => void;
   onDownloadPdf?: () => void;
+  isPdfMode?: boolean;
 }
 
 export const AnimalColoringPage: React.FC<AnimalColoringPageProps> = ({
@@ -16,7 +17,8 @@ export const AnimalColoringPage: React.FC<AnimalColoringPageProps> = ({
   pageNumber,
   showKdpGuides = false,
   onOpenColorStudio,
-  onDownloadPdf
+  onDownloadPdf,
+  isPdfMode = false
 }) => {
   const [copiedPrompt, setCopiedPrompt] = useState(false);
   const [interactiveFills, setInteractiveFills] = useState<Record<string, string>>({});
@@ -42,11 +44,16 @@ export const AnimalColoringPage: React.FC<AnimalColoringPageProps> = ({
   return (
     <div
       id={`animal-page-${animal.id}`}
-      className="print-page relative w-full bg-white overflow-hidden shadow-xl rounded-xl mx-auto flex flex-col justify-between text-slate-800 p-6 sm:p-8 select-none border border-slate-100"
-      style={{
-        aspectRatio: '8.5 / 11',
-        maxWidth: '720px'
-      }}
+      className={
+        isPdfMode
+          ? "pdf-page-container relative w-[816px] h-[1056px] bg-white flex flex-col justify-between text-slate-800 p-12 select-none"
+          : "print-page relative w-full bg-white overflow-hidden shadow-xl rounded-xl mx-auto flex flex-col justify-between text-slate-800 p-6 sm:p-8 select-none border border-slate-100"
+      }
+      style={
+        isPdfMode
+          ? { width: '816px', height: '1056px', boxSizing: 'border-box' }
+          : { aspectRatio: '8.5 / 11', maxWidth: '720px' }
+      }
     >
       {/* Amazon KDP Safe Zone Overlay (0.375" Margin / Gutter Guide) */}
       {showKdpGuides && (

@@ -18,7 +18,7 @@ export interface KdpConfig {
 
 export const KDP_CONFIG_DEFAULT: KdpConfig = {
   title: "My First Cute Animal Coloring Book",
-  subtitle: "18 Fun and Easy Animals for Kids Ages 3-5",
+  subtitle: "40 Fun and Easy Animals for Kids Ages 3-5",
   seriesName: "My First Creative Toddler Books",
   edition: "1st Edition",
   author: "Little Paw Studio",
@@ -31,7 +31,7 @@ export const KDP_CONFIG_DEFAULT: KdpConfig = {
   coverFinish: "Glossy",
   readingAge: "3 - 5 years",
   gradeLevel: "Preschool - Kindergarten",
-  pageCount: 38
+  pageCount: 83
 };
 
 export const KDP_KEYWORDS = [
@@ -61,11 +61,11 @@ export const KDP_CATEGORIES = [
 
 export const KDP_BOOK_DESCRIPTION_HTML = `<h3><b>Give Your Little One The Joy of Coloring with Friendly Animal Friends! 🦁🐘🐰</b></h3>
 
-<p><b>"My First Cute Animal Coloring Book"</b> is specially designed for toddlers and preschoolers aged <b>3 to 5 years</b>. Featuring 18 delightfully adorable, smiling animals with <b>extra-thick lines and large simple shapes</b>, this book guarantees stress-free coloring fun that builds confidence and motor skills!</p>
+<p><b>"My First Cute Animal Coloring Book"</b> is specially designed for toddlers and preschoolers aged <b>3 to 5 years</b>. Featuring 40 delightfully adorable, smiling animals with <b>extra-thick lines and large simple shapes</b> across 83 print-ready single-sided pages, this book guarantees stress-free coloring fun that builds confidence and motor skills!</p>
 
 <h4><b>✨ WHY PARENTS & TODDLERS LOVE THIS BOOK:</b></h4>
 <ul>
-  <li><b>18 Adorable Animal Friends:</b> Elephant, Lion, Bunny, Panda, Giraffe, Monkey, Bear, Tiger, Koala, Fox, Kitten, Puppy, Cow, Pony, Penguin, Duckling, Owl, and Turtle!</li>
+  <li><b>40 Adorable Animal Friends:</b> Safari, farm, ocean, forest, and pet friends including Elephant, Lion, Bunny, Panda, Giraffe, Monkey, Dolphin, Sea Turtle, Whale, Zebra, Hippo, Kangaroo, Deer, and many more!</li>
   <li><b>Top Color Guide on Every Page:</b> A vibrant, fully-colored mini example at the top of each page helps children identify colors, recognize animals, and learn their names!</li>
   <li><b>Giant Coloring Area:</b> 80% of each page is dedicated to large, clear, centered illustrations with zero distracting clutter.</li>
   <li><b>Super-Thick Bold Outlines:</b> Heavy 5–6px equivalent outlines make it effortless for tiny hands and beginner grips to stay within the lines.</li>

@@ -63,9 +63,9 @@ export async function downloadPagesAsPdf({
         continue;
       }
 
-      // Clone or capture element with html2canvas-pro
+      // Clone or capture element with html2canvas-pro at high-res print quality (~240-300 DPI)
       const canvas = await html2canvas(el, {
-        scale: 2, // 2x gives 150-200 DPI, fast and crisp
+        scale: 2.5,
         useCORS: true,
         logging: false,
         backgroundColor: '#ffffff',
@@ -78,16 +78,40 @@ export async function downloadPagesAsPdf({
             stage.style.top = '0';
             stage.style.display = 'block';
             stage.style.visibility = 'visible';
+            stage.style.width = '816px';
           }
           const clonedEl = clonedDoc.getElementById(pageInfo.elementId);
           if (clonedEl) {
             clonedEl.style.display = 'block';
             clonedEl.style.visibility = 'visible';
+            clonedEl.style.width = '816px';
+            clonedEl.style.height = '1056px';
+            clonedEl.style.minWidth = '816px';
+            clonedEl.style.minHeight = '1056px';
+            clonedEl.style.maxWidth = '816px';
+            clonedEl.style.maxHeight = '1056px';
+            clonedEl.style.boxShadow = 'none';
+            clonedEl.style.borderRadius = '0';
+            clonedEl.style.border = 'none';
+            clonedEl.style.margin = '0';
+            clonedEl.style.overflow = 'hidden';
+
+            const innerPage = clonedEl.querySelector('.pdf-page-container, .print-page') as HTMLElement;
+            if (innerPage) {
+              innerPage.style.width = '816px';
+              innerPage.style.height = '1056px';
+              innerPage.style.maxWidth = '816px';
+              innerPage.style.maxHeight = '1056px';
+              innerPage.style.boxShadow = 'none';
+              innerPage.style.borderRadius = '0';
+              innerPage.style.border = 'none';
+              innerPage.style.margin = '0';
+            }
           }
         }
       });
 
-      const imgData = canvas.toDataURL('image/jpeg', 0.95);
+      const imgData = canvas.toDataURL('image/jpeg', 0.98);
 
       if (i > 0) {
         pdf.addPage([8.5, 11], 'portrait');

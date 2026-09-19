@@ -3,17 +3,23 @@ import { Heart, Sparkles, Palette, CheckCircle2 } from 'lucide-react';
 
 interface WelcomePageProps {
   showKdpGuides?: boolean;
+  isPdfMode?: boolean;
 }
 
-export const WelcomePage: React.FC<WelcomePageProps> = ({ showKdpGuides = false }) => {
+export const WelcomePage: React.FC<WelcomePageProps> = ({ showKdpGuides = false, isPdfMode = false }) => {
   return (
     <div
       id="kdp-welcome-page"
-      className="print-page relative w-full bg-white overflow-hidden shadow-xl rounded-xl mx-auto flex flex-col justify-between text-slate-800 p-8 sm:p-12 select-none border border-slate-100"
-      style={{
-        aspectRatio: '8.5 / 11',
-        maxWidth: '720px'
-      }}
+      className={
+        isPdfMode
+          ? "pdf-page-container relative w-[816px] h-[1056px] bg-white flex flex-col justify-between text-slate-800 p-12 select-none"
+          : "print-page relative w-full bg-white overflow-hidden shadow-xl rounded-xl mx-auto flex flex-col justify-between text-slate-800 p-8 sm:p-12 select-none border border-slate-100"
+      }
+      style={
+        isPdfMode
+          ? { width: '816px', height: '1056px', boxSizing: 'border-box' }
+          : { aspectRatio: '8.5 / 11', maxWidth: '720px' }
+      }
     >
       {/* Amazon KDP Safe Zone Overlay */}
       {showKdpGuides && (

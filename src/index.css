@@ -10,6 +10,23 @@
   }
 }
 
+/* Amazon KDP Strict 8.5" x 11" PDF Offscreen Container */
+.pdf-page-container {
+  width: 816px !important;
+  height: 1056px !important;
+  min-width: 816px !important;
+  min-height: 1056px !important;
+  max-width: 816px !important;
+  max-height: 1056px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  border: none !important;
+  overflow: hidden !important;
+  background-color: #ffffff !important;
+}
+
 @media print {
   @page {
     size: 8.5in 11in;
