@@ -1,0 +1,6 @@
+{
+  "name": "My First Cute Animal Coloring Book",
+  "description": "Complete Amazon KDP-ready coloring book for children aged 3–5 with 18 cute animals, colored reference guides, blank bleed-guard pages, print-ready 8.5x11 layouts, and publishing kit.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
